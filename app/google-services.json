@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1066225060759",
+    "firebase_url": "https://evodata-4d355.firebaseio.com",
+    "project_id": "evodata-4d355",
+    "storage_bucket": "evodata-4d355.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1066225060759:android:9ee40515489e6e26cbd2d2",
+        "android_client_info": {
+          "package_name": "com.dbsrm.evo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1066225060759-14lb590l7t1nd8af55rtor0ro3eq9epc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBo2_8xb0xOWQvAiCQKm1657b5dJLQr5XI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1066225060759-14lb590l7t1nd8af55rtor0ro3eq9epc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
