@@ -15,7 +15,21 @@
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/signout_btn"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="300dp"
+        android:clickable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_signout"
+        tools:src="@drawable/ic_signout"
+        tools:srcCompat="@drawable/ic_signout" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation_view"

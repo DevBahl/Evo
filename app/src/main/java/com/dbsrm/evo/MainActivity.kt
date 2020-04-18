@@ -1,12 +1,25 @@
 package com.dbsrm.evo
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
+import android.view.View
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_offers.*
 
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
+
     var recycle1: RecyclerView? = null
     var bottomNavigationView: BottomNavigationView? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,7 +39,17 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
                 startActivity(new Intent(getApplicationContext(), AddImageActivity.class));
             }
         });*/
+
+        signout_btn.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            val intent = Intent(this,LoginActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or (Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+        }
+        checkCurrentUser()
     }
+
+
 
     var homeFragment = Home()
     var calenderFragment = Calender()
@@ -80,5 +103,14 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
     companion object {
         private const val CATEGORY_SAMPLE = "com.prolificinteractive.materialcalendarview.sample.SAMPLE"
+    }
+
+    private fun checkCurrentUser(){
+        val uid = FirebaseAuth.getInstance().uid
+        if(uid == null){
+            val intent = Intent(this, RegisterActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+        }
     }
 }

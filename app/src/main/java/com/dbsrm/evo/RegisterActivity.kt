@@ -7,6 +7,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.view.View
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
@@ -20,6 +21,8 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
+        register_progressBar.visibility = View.INVISIBLE
+
         register_btn.setOnClickListener {
             registerTheUser()
         }
@@ -28,6 +31,12 @@ class RegisterActivity : AppCompatActivity() {
             intent.type = "image/*"
             startActivityForResult(intent,0)
         }
+        alreadyhaveacc_btn.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or (Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+        }
+
     }
 
     var selectPhotoUri: Uri? = null
@@ -52,13 +61,17 @@ class RegisterActivity : AppCompatActivity() {
         val password = register_password.text.toString()
         val username = register_name.text.toString()
         val photo = photo_upload_register
-        if(username.isEmpty()||email.isEmpty()||password.isEmpty()||photo.getDrawable() == null){
+        if(username.isEmpty()||email.isEmpty()||password.isEmpty()){
             Toast.makeText(this,"Please fill all the Details", Toast.LENGTH_SHORT).show()
+            return
+        }else if(photo.getDrawable() == null){
+            Toast.makeText(this,"Please Choose Your Image", Toast.LENGTH_SHORT).show()
             return
         }
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email,password)
             .addOnCompleteListener {
                 if(!it.isSuccessful) return@addOnCompleteListener
+                register_progressBar.visibility = View.VISIBLE
                 uploadImageToFirebase()
             }
             .addOnFailureListener {
@@ -98,4 +111,6 @@ class RegisterActivity : AppCompatActivity() {
     }
 }
 class AllUser(val uid:String, val name:String, val profileImageUrl: String)
-
+{
+    constructor(): this("","","")
+}
