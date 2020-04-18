@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.storage.FirebaseStorage
 
 class Adapter : RecyclerView.Adapter<Adapter.MyviewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyviewHolder {
@@ -37,9 +38,9 @@ class Adapter : RecyclerView.Adapter<Adapter.MyviewHolder>() {
         override fun onClick(view: View) {}
 
         init {
-            tv_name = itemView.findViewById<View>(R.id.moviename) as TextView
+            tv_name = itemView.findViewById<View>(R.id.uploaded_description) as TextView
             //   tv_phone=(TextView) itemView.findViewById(R.id.txt2);
-            img = itemView.findViewById<View>(R.id.movie) as ImageView
+            img = itemView.findViewById<View>(R.id.uploaded_image) as ImageView
             itemView.setOnClickListener(this)
         }
     }

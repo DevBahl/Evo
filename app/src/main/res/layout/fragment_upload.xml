@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UploadFragment">
+
+    <Button
+        android:id="@+id/uploadnew_photo"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/round_image"
+        android:text="Click to Add Photo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <EditText
+        android:id="@+id/write_description"
+        android:layout_width="300dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="24dp"
+        android:hint="Description"
+        android:textColor="#ffffff"
+        app:layout_constraintEnd_toEndOf="@+id/uploadnew_photo"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="@+id/uploadnew_photo"
+        app:layout_constraintTop_toBottomOf="@+id/uploadnew_photo" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_marginTop="32dp"
+        android:id="@+id/show_new_uploaded_image"
+        android:layout_width="200dp"
+        android:layout_height="260dp"
+        app:layout_constraintBottom_toBottomOf="@+id/uploadnew_photo"
+        app:layout_constraintEnd_toEndOf="@+id/uploadnew_photo"
+        app:layout_constraintStart_toStartOf="@+id/uploadnew_photo"
+        app:layout_constraintTop_toTopOf="@+id/uploadnew_photo" />
+
+    <Button
+        android:id="@+id/btn_upload_newPost"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/round_image"
+        android:text="Upload"
+        app:layout_constraintEnd_toEndOf="@+id/write_description"
+        app:layout_constraintStart_toStartOf="@+id/write_description"
+        app:layout_constraintTop_toBottomOf="@+id/write_description" />
+
+    <ProgressBar
+        android:id="@+id/newPostUpload_progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="@+id/btn_upload_newPost"
+        app:layout_constraintStart_toStartOf="@+id/btn_upload_newPost"
+        app:layout_constraintTop_toBottomOf="@+id/btn_upload_newPost" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
